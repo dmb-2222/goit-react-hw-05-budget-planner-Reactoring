@@ -1,8 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 import { connect } from "react-redux";
-import BudgetForm from "./BudgetForm";
-import ExpenseForm from "./ExpenseForm";
+import BudgetForm from "./containers/BudgetFormContainer";
+import ExpenseForm from "./containers/ExpenseFormContainer";
 import ExpensesTable from "./ExpensesTable";
 import Values from "./Values";
 
@@ -19,13 +19,13 @@ const Container = styled.div`
 `;
 
 const App = ({ expenses }) => (
-    <Container>
-      <BudgetForm />
-      <Values />
-      <ExpenseForm />
-      {expenses.length > 0 && <ExpensesTable />}
-    </Container>
-  );
+  <Container>
+    <BudgetForm />
+    <Values />
+    <ExpenseForm />
+    {expenses.length > 0 && <ExpensesTable />}
+  </Container>
+);
 
 const mapStateToProps = state => ({
   expenses: state.expenseList
