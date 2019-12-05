@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/goit-react-hw-05-budget-planner/precache-manifest.d014d2662c46c0b60f5824bc5bb10a2b.js"
+  "/goit-react-hw-05-budget-planner/precache-manifest.549b267bcebdc76f34b60d87bbf6d449.js"
 );
 
 self.addEventListener('message', (event) => {
