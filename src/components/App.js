@@ -18,8 +18,7 @@ const Container = styled.div`
   margin-right: auto;
 `;
 
-const App = ({ expenses }) => {
-  return (
+const App = ({ expenses }) => (
     <Container>
       <BudgetForm />
       <Values />
@@ -27,7 +26,6 @@ const App = ({ expenses }) => {
       {expenses.length > 0 && <ExpensesTable />}
     </Container>
   );
-};
 
 const mapStateToProps = state => ({
   expenses: state.expenseList
