@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { connect } from "react-redux";
 import BudgetForm from "./containers/BudgetFormContainer";
 import ExpenseForm from "./containers/ExpenseFormContainer";
-import ExpensesTable from "./ExpensesTable";
+import ExpensesTable from "./containers/ExpensesTableContainer";
 import Values from "./Values";
 
 const Container = styled.div`
