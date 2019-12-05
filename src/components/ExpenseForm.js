@@ -1,30 +1,38 @@
-import React, { Component } from 'react';
-import Form from './shared/Form';
-import Label from './shared/Label';
-import Input from './shared/Input';
-import Button from './shared/Button';
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import * as actions from "../redux/action";
+import shortid from "short-id";
+import Form from "./shared/Form";
+import Label from "./shared/Label";
+import Input from "./shared/Input";
+import Button from "./shared/Button";
 
 const labelStyles = `
   margin-bottom: 16px;  
 `;
 
-export default class ExpenseForm extends Component {
+class ExpenseForm extends Component {
   state = {
-    name: '',
-    amount: 0,
+    name: "",
+    amount: 0
   };
 
   handleChange = e => {
     this.setState({
-      [e.target.name]: e.target.value,
+      [e.target.name]: e.target.value
     });
   };
 
   handleSubmit = e => {
     e.preventDefault();
-
-    this.props.onSave({ ...this.state });
-    this.setState({ name: '', amount: 0 });
+    const { name, amount } = this.state;
+    const expense = {
+      id: shortid.generate(),
+      name,
+      amount: Number(amount)
+    };
+    this.props.onExpense(expense);
+    this.setState({ name: "", amount: 0 });
   };
 
   render() {
@@ -54,3 +62,13 @@ export default class ExpenseForm extends Component {
     );
   }
 }
+
+const mapStateToProps = state => ({
+  budget: state.budget,
+  expenses: state.expenseList
+});
+const mapDispatchToProps = dispatch => ({
+  onExpense: value => dispatch(actions.addExpense(value))
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(ExpenseForm);

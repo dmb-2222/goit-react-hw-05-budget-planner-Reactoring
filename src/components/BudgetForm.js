@@ -27,7 +27,6 @@ class BudgetForm extends Component {
   };
 
   render() {
-    console.log("this.props", this.props.budget);
     return (
       <Form onSubmit={this.handleSubmit}>
         <Label customStyles={labelStyles}>
@@ -45,9 +44,10 @@ class BudgetForm extends Component {
   }
 }
 const mapStateToProps = state => ({
-  budget: state.budget
+  budget: state.budget,
+  expenseList:state.expenseList
 });
 const mapDispatchToProps = dispatch => ({
-  onSave: (value) => dispatch(actions.addBudget(value))
+  onSave: value => dispatch(actions.addBudget(value))
 });
 export default connect(mapStateToProps, mapDispatchToProps)(BudgetForm);

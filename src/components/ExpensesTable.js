@@ -1,4 +1,6 @@
 import React from 'react';
+import { connect } from "react-redux";
+import * as actions from "../redux/action";
 import styled from 'styled-components';
 import Button from './shared/Button';
 
@@ -18,7 +20,9 @@ const Table = styled.table`
   }
 `;
 
-const ExpensesTable = ({ items = [], onRemove }) => (
+const ExpensesTable = ({ items = [], onRemove }) =>{
+  console.log(items)
+return (
   <Table>
     <thead>
       <tr>
@@ -39,6 +43,12 @@ const ExpensesTable = ({ items = [], onRemove }) => (
       ))}
     </tbody>
   </Table>
-);
+)};
+const mapStateToProps = state => ({
+  items:state.expenseList
+});
+const mapDispatchToProps = dispatch => ({
+  onRemove:value => dispatch(actions.removeExpense(value)),
+});
 
-export default ExpensesTable;
+export default connect(mapStateToProps, mapDispatchToProps)(ExpensesTable);
