@@ -1,0 +1,21 @@
+{
+  "files": {
+    "main.css": "/goit-react-hw-05-budget-planner/static/css/main.3cbcc61d.chunk.css",
+    "main.js": "/goit-react-hw-05-budget-planner/static/js/main.8f5ffb92.chunk.js",
+    "main.js.map": "/goit-react-hw-05-budget-planner/static/js/main.8f5ffb92.chunk.js.map",
+    "runtime-main.js": "/goit-react-hw-05-budget-planner/static/js/runtime-main.17532924.js",
+    "runtime-main.js.map": "/goit-react-hw-05-budget-planner/static/js/runtime-main.17532924.js.map",
+    "static/js/2.14516b3b.chunk.js": "/goit-react-hw-05-budget-planner/static/js/2.14516b3b.chunk.js",
+    "static/js/2.14516b3b.chunk.js.map": "/goit-react-hw-05-budget-planner/static/js/2.14516b3b.chunk.js.map",
+    "index.html": "/goit-react-hw-05-budget-planner/index.html",
+    "precache-manifest.d014d2662c46c0b60f5824bc5bb10a2b.js": "/goit-react-hw-05-budget-planner/precache-manifest.d014d2662c46c0b60f5824bc5bb10a2b.js",
+    "service-worker.js": "/goit-react-hw-05-budget-planner/service-worker.js",
+    "static/css/main.3cbcc61d.chunk.css.map": "/goit-react-hw-05-budget-planner/static/css/main.3cbcc61d.chunk.css.map"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.17532924.js",
+    "static/js/2.14516b3b.chunk.js",
+    "static/css/main.3cbcc61d.chunk.css",
+    "static/js/main.8f5ffb92.chunk.js"
+  ]
+}
