@@ -12,7 +12,7 @@ const labelStyles = `
 class ExpenseForm extends Component {
   state = {
     name: "",
-    amount: 0
+    amount: ''
   };
 
   handleChange = e => {
@@ -30,7 +30,7 @@ class ExpenseForm extends Component {
       amount: Number(amount)
     };
     this.props.onExpense(expense);
-    this.setState({ name: "", amount: 0 });
+    this.setState({ name: "", amount: '' });
   };
 
   render() {
