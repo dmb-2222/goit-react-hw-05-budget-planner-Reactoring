@@ -43,18 +43,14 @@ class ExpenseForm extends Component {
       }
     });
     const currentState= this.state.counter
-
     this.setState(prevState => {
-      // console.log(currentState);
-      console.log(prevState.counter);
-      if (this.props.budget >= prevState.counter) {
+      if (this.props.budget >= prevState.counter && expense.amount>0) {
         return this.props.onExpense(expense);
       }
-      this.setState({counter:currentState})
-      console.log(currentState);
       this.unCorrectExpenseInput();
+      return {counter:currentState}
     });
-    this.setState({ name: "", amount: "" });
+    this.setState({ name: "", amount: ""});
   };
 
   render() {
