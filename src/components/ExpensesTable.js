@@ -19,7 +19,6 @@ const Table = styled.table`
 `;
 
 const ExpensesTable = ({ items = [], onRemove }) =>{
-  console.log(items)
 return (
   <Table>
     <thead>

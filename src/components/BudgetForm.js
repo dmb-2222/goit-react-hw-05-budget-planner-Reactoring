@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { toast } from "react-toastify";
 import Form from "./shared/Form";
 import Label from "./shared/Label";
 import Input from "./shared/Input";
@@ -9,8 +10,12 @@ const labelStyles = `
 `;
 class BudgetForm extends Component {
   state = {
-    budget: ''
+    budget: ""
   };
+  unCorrectInput = () =>
+    toast("Введите корректное число больше нуля", {
+      autoClose: 3000
+    });
 
   handleChange = e => {
     this.setState({
@@ -20,23 +25,29 @@ class BudgetForm extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    this.props.onSave(+this.state.budget);
-    this.setState({ budget: '' });
+    if (this.state.budget > 0) {
+      this.props.onSave(+this.state.budget);
+      this.setState({ budget: "" });
+      return;
+    }
+    this.unCorrectInput();
   };
 
   render() {
     return (
-      <Form onSubmit={this.handleSubmit}>
-        <Label customStyles={labelStyles}>
-          Enter your total budget
-          <Input
-            type="number"
-            value={this.state.budget}
-            onChange={this.handleChange}
-          />
-        </Label>
-        <Button label="Save" type="submit" />
-      </Form>
+      <>
+        <Form onSubmit={this.handleSubmit}>
+          <Label customStyles={labelStyles}>
+            Enter your total budget
+            <Input
+              type="number"
+              value={this.state.budget}
+              onChange={this.handleChange}
+            />
+          </Label>
+          <Button label="Save" type="submit" />
+        </Form>
+      </>
     );
   }
 }

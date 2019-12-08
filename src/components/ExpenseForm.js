@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { toast } from "react-toastify";
 import shortid from "short-id";
 import Form from "./shared/Form";
 import Label from "./shared/Label";
@@ -12,9 +13,13 @@ const labelStyles = `
 class ExpenseForm extends Component {
   state = {
     name: "",
-    amount: ''
+    amount: "",
+    counter: 0
   };
-
+  unCorrectExpenseInput = () =>
+    toast("Веддите число больше 0 или ваша трата привешает бюджет", {
+      autoClose: 2000
+    });
   handleChange = e => {
     this.setState({
       [e.target.name]: e.target.value
@@ -29,8 +34,27 @@ class ExpenseForm extends Component {
       name,
       amount: Number(amount)
     };
-    this.props.onExpense(expense);
-    this.setState({ name: "", amount: '' });
+
+    this.setState(prevState => {
+      if (this.props.budget >= prevState.counter){
+        return {
+          counter: (prevState.counter += +this.state.amount),
+        };
+      }
+    });
+    const currentState= this.state.counter
+
+    this.setState(prevState => {
+      // console.log(currentState);
+      console.log(prevState.counter);
+      if (this.props.budget >= prevState.counter) {
+        return this.props.onExpense(expense);
+      }
+      this.setState({counter:currentState})
+      console.log(currentState);
+      this.unCorrectExpenseInput();
+    });
+    this.setState({ name: "", amount: "" });
   };
 
   render() {
