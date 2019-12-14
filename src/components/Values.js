@@ -2,16 +2,17 @@ import React from "react";
 import styled from "styled-components";
 import Value from "./Value";
 import { connect } from "react-redux";
-import { calculateTotalExpenses, calculateBalance } from "./helpers/calculate";
+// import { calculateTotalExpenses } from "./helpers/calculate";
+import { calculateBalance, calculateTotalExpenses } from "./../redux/selector";
 const Container = styled.section`
   display: inline-flex;
   justify-content: space-between;
   align-items: center;
 `;
 
-const Values = ({ budget, expenses}) => {
-  const totalExpenses = calculateTotalExpenses(expenses);
-  const balance = calculateBalance(budget, totalExpenses);
+const Values = ({ budget, balance, totalExpenses }) => {
+  // const totalExpenses = calculateTotalExpenses(expenses);
+  // const balance = calculateBalance(budget, totalExpenses);
 
   return (
     <Container>
@@ -24,8 +25,8 @@ const Values = ({ budget, expenses}) => {
 
 const mapStateToProps = state => ({
   budget: state.budget,
-  expenses: state.expenseList
+  balance: calculateBalance(state), 
+  totalExpenses: calculateTotalExpenses(state)
 });
-
 
 export default connect(mapStateToProps)(Values);
