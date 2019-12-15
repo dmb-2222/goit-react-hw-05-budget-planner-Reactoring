@@ -1,12 +1,15 @@
 export const Type = {
   ADD_BUDGET: "ADD_BUDGET",
   ADD_EXPENSE: "ADD_EXPENSE",
-  REMOVE_EXPENSE: "REMOVE_EXPENSE",
+  REMOVE_EXPENSE: "REMOVE_EXPENSE"
 };
 
 export const addBudget = value => ({
   type: Type.ADD_BUDGET,
-  payload: value
+  payload: value,
+  meta: {
+    throttle: 2000
+  }
 });
 
 export const addExpense = value => ({

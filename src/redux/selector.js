@@ -1,7 +1,8 @@
 import { createSelector } from "reselect";
 export const getBudget = state => state.budget;
 export const getExpenseList = state => state.expenseList;
-// Мемомизация
+// Занятие 15
+// Мемомизация для не примитивов, для коллекций, но в корзине (total) можно использовать!
 export const calculateTotalExpenses = createSelector(
   [getExpenseList],
   expenses => expenses.reduce((total, expense) => total + expense.amount, 0)
